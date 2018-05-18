@@ -28,7 +28,7 @@ gulp.task('serve', ['sass'], function() {
 gulp.task('ejs', function () {
   var json = JSON.parse(fs.readFileSync('./package.json'));
   return gulp.src('app/**/[^_]*.ejs')
-    .pipe(ejs(json, {}, {ext: '.html'}))
+    .pipe(ejs(json, {root: __dirname + '/app'}, {ext: '.html'}))
     .pipe(gulp.dest('app'))
     .pipe(browserSync.stream());
 });
